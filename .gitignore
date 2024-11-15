@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies and AdonisJS build
 node_modules
 build
@@ -23,3 +24,6 @@ yarn-error.log
 
 # Platform specific
 .DS_Store
+=======
+node_modules
+>>>>>>> 8f226c27a5fec0071ece95b1b484bc532b2abfcf
