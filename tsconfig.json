@@ -4,5 +4,9 @@
     "rootDir": "./",
     "outDir": "./build",
     "moduleResolution": "node16",
-  },
+    "baseUrl": "./beTalentProject", // Adicione esta linha
+    "paths": {
+      "@ioc:Adonis/Core/*": ["node_modules/@adonisjs/core/build/src/*"]
+    }
+  }
 }
