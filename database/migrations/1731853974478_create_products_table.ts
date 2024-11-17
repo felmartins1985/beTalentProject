@@ -11,6 +11,7 @@ export default class extends BaseSchema {
       table.decimal('price').notNullable()
       table.timestamp('created_at')
       table.timestamp('updated_at')
+      table.timestamp('deleted_at').nullable()
     })
   }
 
