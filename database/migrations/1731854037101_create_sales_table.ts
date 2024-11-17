@@ -16,7 +16,7 @@ export default class extends BaseSchema {
       table.integer('quantity').notNullable()
       table.decimal('unit_price').notNullable()
       table.decimal('total_price').notNullable()
-      table.timestamp('saled_at')
+      table.timestamp('saled_at').notNullable()
     })
   }
 
