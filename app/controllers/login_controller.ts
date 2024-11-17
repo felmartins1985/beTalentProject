@@ -7,16 +7,11 @@ export default class LoginController {
   async login({ request, auth, response }: HttpContextContract) {
     const { email, password } = request.all()
 
-    // Encontra o usuário pelo email
     const findUser = await User.findBy('email', email)
     if (!findUser) {
       response.status(401)
-      return {
-        message: 'User not found',
-      }
+      return response.json({ message: 'Invalid User' })
     }
-
-    // Verifica a senha
     const verifyPassword = await hash.verify(findUser.password, password)
     if (!verifyPassword) {
       response.status(401)
