@@ -3,6 +3,7 @@ import Client from '#models/client'
 import db from '@adonisjs/lucid/services/db'
 import { DateTime } from 'luxon'
 import { newClientValidator, updateClient } from '../validators/client.js'
+import BadRequestException from '#exceptions/bad_request_exception'
 export default class ClientsController {
   async index({ response }: HttpContext) {
     const clients = await Client.query().orderBy('id', 'asc')
@@ -35,6 +36,10 @@ export default class ClientsController {
     const transaction = await db.transaction()
     try {
       const body = await request.validateUsing(newClientValidator)
+      const findByCPF = await Client.findBy('cpf', body.cpf)
+      if (findByCPF) {
+        throw new BadRequestException('CPF already exists', { status: 400 })
+      }
       const client = await Client.create(
         {
           name: body.name,

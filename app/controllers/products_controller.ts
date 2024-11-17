@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import { newProductValidator, updateProductValidator } from '../validators/product.js'
 import Product from '#models/product'
+import BadRequestException from '#exceptions/bad_request_exception'
 
 export default class ProductsController {
   async index({ response }: HttpContext) {
@@ -23,6 +24,10 @@ export default class ProductsController {
   }
   async store({ request, response }: HttpContext) {
     const data = await request.validateUsing(newProductValidator)
+    const findProduct = await Product.findBy('name', data.name)
+    if (findProduct) {
+      throw new BadRequestException('Product already exists', { status: 400 })
+    }
     const product = await Product.create(data)
     response.status(201)
     return response.json({ message: 'Success', data: product })
