@@ -1,7 +1,7 @@
 import { defineConfig } from '@adonisjs/auth'
 import { sessionUserProvider } from '@adonisjs/auth/session'
 import env from '#start/env'
-import { JwtGuard } from '../app/auth/jwt/guard.js'
+//import { JwtGuard } from '../app/auth/jwt/guard.js'
 
 const jwtConfig = {
   secret: env.get('APP_KEY'),

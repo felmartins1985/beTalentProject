@@ -5,7 +5,7 @@ export default class Address extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
   @column()
-  declare customerId: string
+  declare customerId: number
   @column()
   declare streetAddress: string
   @column()
@@ -13,7 +13,7 @@ export default class Address extends BaseModel {
   @column()
   declare state: string
   @column()
-  declare postalCode: string
+  declare postalCode: number
   @column()
   declare country: string
 
