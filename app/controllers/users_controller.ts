@@ -5,21 +5,25 @@ import BadRequestException from '#exceptions/bad_request_exception'
 
 export default class UsersController {
   async store({ request, response }: HttpContext) {
-    const data = request.only(['username', 'email', 'password'])
-    const userByEmail = await User.findBy('email', data.email)
-    if (userByEmail) {
-      throw new BadRequestException('Email already exists', { status: 400 })
-    }
-    data.password = await hash.make(data.password)
+    try {
+      const data = request.only(['username', 'email', 'password'])
+      const userByEmail = await User.findBy('email', data.email)
+      if (userByEmail) {
+        throw new BadRequestException('Email already exists', { status: 400 })
+      }
+      data.password = await hash.make(data.password)
 
-    const user = await User.create(data)
-    response.status(200)
-    return {
-      message: 'Success',
-      data: {
-        username: user.username,
-        email: user.email,
-      },
+      const user = await User.create(data)
+      response.status(201)
+      return {
+        message: 'Success',
+        data: {
+          username: user.username,
+          email: user.email,
+        },
+      }
+    } catch (error) {
+      response.status(500).json({ message: error.message })
     }
   }
 }

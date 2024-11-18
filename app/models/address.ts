@@ -8,13 +8,13 @@ export default class Address extends BaseModel {
   @column()
   declare clientId: number
   @column()
-  declare streetAddress: string
+  declare address: string
   @column()
   declare city: string
   @column()
   declare state: string
   @column()
-  declare postalCode: number
+  declare postal: string
   @column()
   declare country: string
 

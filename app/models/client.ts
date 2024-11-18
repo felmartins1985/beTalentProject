@@ -18,7 +18,7 @@ export default class Client extends BaseModel {
   declare name: string
 
   @column()
-  declare cpf: number
+  declare cpf: string
 
   @hasMany(() => Telephone)
   declare Telephones: HasMany<typeof Telephone>

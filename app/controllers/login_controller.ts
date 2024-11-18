@@ -1,10 +1,10 @@
 import User from '#models/user'
-import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import type { HttpContext } from '@adonisjs/core/http'
 // >VERIFICAR SOBRE O TOKEN<
 import hash from '@adonisjs/core/services/hash'
 
 export default class LoginController {
-  async login({ request, auth, response }: HttpContextContract) {
+  async login({ request, auth, response }: HttpContext) {
     const { email, password } = request.all()
 
     const findUser = await User.findBy('email', email)
@@ -19,14 +19,13 @@ export default class LoginController {
         message: 'Invalid credentials',
       }
     }
-
+    const token = await User.accessTokens.create(findUser)
     // Gera o token JWT
-    const token = await auth.use('jwt').generate(findUser)
-
+    //const token = await auth.use('jwt').generate(findUser)
     // Retorna o token
     return {
-      message: 'Login successful',
-      token,
+      type: 'bearer',
+      value: token.value!.release(),
     }
   }
 }
