@@ -176,6 +176,6 @@ após isso é só colocar o token em um campo Authorization no header de suas re
 
 `Bearer {token}`
 
-## Body's para suas requisições
+
 
 
