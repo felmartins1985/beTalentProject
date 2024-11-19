@@ -22,7 +22,8 @@ export default class ProductsController {
       const { id } = request.params()
       const product = await Product.findOrFail(id)
       if (!product) {
-        throw new BadRequestException('Product not exists', { status: 404 })
+        response.status(404)
+        return response.json({ message: 'Product not exists' })
       }
       response.status(200)
       return response.json({ data: product })
@@ -36,7 +37,8 @@ export default class ProductsController {
       const data = await request.validateUsing(newProductValidator)
       const findProduct = await Product.findBy('name', data.name)
       if (findProduct) {
-        throw new BadRequestException('Product already exists', { status: 400 })
+        response.status(400)
+        return response.json({ message: 'Product already exists' })
       }
       const product = await Product.create(data)
       response.status(201)
@@ -52,7 +54,8 @@ export default class ProductsController {
       const data = await request.validateUsing(updateProductValidator)
       const product = await Product.findOrFail(id)
       if (!product) {
-        throw new BadRequestException('Product not exists', { status: 404 })
+        response.status(404)
+        return response.json({ message: 'Product not exists' })
       }
       product.merge(data)
       await product.save()

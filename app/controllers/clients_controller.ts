@@ -20,7 +20,7 @@ export default class ClientsController {
       const clientId = params.id
       if (!clientId) {
         response.status(404)
-        throw new BadRequestException('Client not exists', { status: 400 })
+        return response.json({ message: 'Client not exists' })
       }
       const { month, year } = request.qs()
       const salesClients = await Client.query()
@@ -48,7 +48,8 @@ export default class ClientsController {
       const body = await request.validateUsing(newClientValidator)
       const findByCPF = await Client.findBy('cpf', body.cpf)
       if (findByCPF) {
-        throw new BadRequestException('CPF already exists', { status: 400 })
+        response.status(400)
+        return response.json({ message: 'CPF already exists' })
       }
       const client = await Client.create(
         {
@@ -87,8 +88,8 @@ export default class ClientsController {
       const body = await request.validateUsing(updateClient)
       const client = await Client.findOrFail(params.id)
       if (!client) {
-        response.status(404)
-        throw new BadRequestException('Client not exists', { status: 400 })
+        response.status(400)
+        return response.json({ message: 'Client not exists' })
       }
       await transaction
         .from('addresses')

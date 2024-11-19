@@ -15,11 +15,16 @@ router.group(() => {
   router.patch('/products/:id', [ProductsController, 'update'])
   router.delete('/products/:id', [ProductsController, 'destroy'])
 })
-router.group(() => {
-  router.get('/clients', [ClientsController, 'index'])
-  router.get('/clients/:id', [ClientsController, 'show'])
-  router.post('/clients', [ClientsController, 'store'])
-  router.patch('/clients/:id', [ClientsController, 'update'])
-  router.delete('/clients/:id', [ClientsController, 'destroy'])
-})
-// .use(middleware.auth())
+router
+  .group(() => {
+    router.get('/clients', [ClientsController, 'index'])
+    router.get('/clients/:id', [ClientsController, 'show'])
+    router.post('/clients', [ClientsController, 'store'])
+    router.patch('/clients/:id', [ClientsController, 'update'])
+    router.delete('/clients/:id', [ClientsController, 'destroy'])
+  })
+  .use(
+    middleware.auth({
+      guards: ['api'],
+    })
+  )

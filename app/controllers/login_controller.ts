@@ -15,17 +15,12 @@ export default class LoginController {
     const verifyPassword = await hash.verify(findUser.password, password)
     if (!verifyPassword) {
       response.status(401)
-      return {
-        message: 'Invalid credentials',
-      }
+      return response.json({ message: 'Invalid Password' })
     }
     const token = await User.accessTokens.create(findUser)
     // Gera o token JWT
     //const token = await auth.use('jwt').generate(findUser)
     // Retorna o token
-    return {
-      type: 'bearer',
-      value: token.value!.release(),
-    }
+    return response.json({ type: 'Bearer', value: token.value!.release() })
   }
 }

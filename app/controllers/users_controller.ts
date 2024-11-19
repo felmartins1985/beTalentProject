@@ -9,7 +9,8 @@ export default class UsersController {
       const data = request.only(['username', 'email', 'password'])
       const userByEmail = await User.findBy('email', data.email)
       if (userByEmail) {
-        throw new BadRequestException('Email already exists', { status: 400 })
+        response.status(404)
+        return response.json({ message: 'Email already exists' })
       }
       data.password = await hash.make(data.password)
 
