@@ -1,27 +1,29 @@
-# BeTalent - Teste Técnico
+# BeTalentProject - Teste 👨🏻‍💻
 
-Este projeto é uma API para o teste técnico da BeTalent, que permite o cadastro de usuários e o gerenciamento de clientes, produtos e vendas. O sistema foi desenvolvido usando AdonisJS e utiliza MySQL como banco de dados
+Consiste em uma aplicação que permite, por meio de endpoints, cadastrar clientes, produtos e vendas. Para realizar essas funções, é necessário criar um usuário e fazer o login, haja vista é preciso ter permissão para fazer o gerenciamento das rotas acima.
+* O sistema foi desenvolvido usando AdonisJS em sua versão 6 e utiliza MySQL como banco de dados.
 
-## Como instalar e iniciar o projeto
+### Instruções
 
-<details>
-<summary><b>⚠️ Pré-requisitos</b></summary>
-Antes de executar o projeto você deve garantir que tem as seguintes tecnologias instaladas, juntamente a elas contêm a versão recomendada:
+- Para rodar a aplicação localmente e os testes do backend, realize o clone do projeto e utilize os comandos a seguir:
+ ```
+Para clonar o projeto:
+git clone git@github.com:felmartins1985/beTalentProject.git
 
-[Node.js](https://nodejs.org/pt): 20.15.1
+Para rodar a aplicação dockerizada, instalar as dependências e iniciar as aplicações:
+<-- na raiz do projeto -->
+docker compose up -d
 
-[Docker](https://docs.docker.com/get-docker/): 27.0.3
+Para instalar as dependências
+<-- na raiz do projeto -->
+npm run startup
+Para iniciar o projeto
+<-- na raiz do projeto -->
+npm run dev
+Para rodar os testes:
+<-- na raiz do projeto -->
+npm run test
 
-[Docker-Compose](https://docs.docker.com/compose/install/)
-
-</details>
-<details>
-<summary><b>🧑‍💻 Como iniciar</b></summary>
-Antes de rodar o projeto você deve clonar este repositório:
-
-```bash
-git clone https://github.com/Brunobmendes/BeTalent-Tech-Test.git
-```
 
 entre no diretório:
 ```bash
