@@ -74,7 +74,7 @@ export default class ProductsController {
         throw new BadRequestException('Product not exists', { status: 404 })
       }
       await product.delete()
-      response.status(200)
+      response.status(204)
       return response.json({ message: 'Success delete' })
     } catch (err) {
       response.status(500)

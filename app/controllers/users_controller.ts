@@ -1,7 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import User from '#models/user'
 import hash from '@adonisjs/core/services/hash'
-import BadRequestException from '#exceptions/bad_request_exception'
 
 export default class UsersController {
   async store({ request, response }: HttpContext) {

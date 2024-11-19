@@ -3,7 +3,7 @@ import Client from '#models/client'
 import db from '@adonisjs/lucid/services/db'
 import { DateTime } from 'luxon'
 import { newClientValidator, updateClient } from '../validators/client.js'
-import BadRequestException from '#exceptions/bad_request_exception'
+
 export default class ClientsController {
   async index({ response }: HttpContext) {
     try {
