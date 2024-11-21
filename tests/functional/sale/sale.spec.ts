@@ -17,13 +17,13 @@ test.group('Sale Group', (group) => {
     const clientResponse = await client
       .post('/clients')
       .json({
-        name: 'John Doe',
+        name: 'Felipe',
         cpf: '12345678903',
-        telephone: "5511987654321",
+        telephone: '5511987654321',
         address: {
           street: '123 Main St',
           city: 'Belo Horizonte',
-          state: 'SP',
+          state: 'MG',
           postal: '01000000',
           country: 'Brasil',
         },

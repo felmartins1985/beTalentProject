@@ -17,13 +17,13 @@ test.group('Client Group', (group) => {
     const response = await client
       .post('/clients')
       .json({
-        name: 'John Doe',
+        name: 'Felipe',
         cpf: '12345678903',
         telephone: '5511987654321',
         address: {
           street: '123 Main St',
           city: 'Belo Horizonte',
-          state: 'SP',
+          state: 'MG',
           postal: '01000000',
           country: 'Brasil',
         },
@@ -47,13 +47,13 @@ test.group('Client Group', (group) => {
     await client
       .post('/clients')
       .json({
-        name: 'John Doe',
+        name: 'Felipe',
         cpf: '12345678903',
         telephone: '5511987654321',
         address: {
           street: '123 Main St',
           city: 'Belo Horizonte',
-          state: 'SP',
+          state: 'MG',
           postal: '01000000',
           country: 'Brasil',
         },
@@ -62,13 +62,13 @@ test.group('Client Group', (group) => {
     const response = await client
       .post('/clients')
       .json({
-        name: 'John Doe',
+        name: 'Felipe',
         cpf: '12345678903',
         telephone: '+5511987654321',
         address: {
           street: '123 Main St',
           city: 'Belo Horizonte',
-          state: 'SP',
+          state: 'MG',
           postal: '01000000',
           country: 'Brasil',
         },
@@ -92,7 +92,7 @@ test.group('Client Group', (group) => {
     await client
       .post('/clients')
       .json({
-        name: 'John Doe',
+        name: 'Felipe',
         cpf: '12345678903',
         telephone: '5511987654321',
         address: {
@@ -122,13 +122,13 @@ test.group('Client Group', (group) => {
     await client
       .post('/clients')
       .json({
-        name: 'John Doe',
+        name: 'Felipe',
         cpf: '12345678903',
         telephone: '5511987654321',
         address: {
           street: '123 Main St',
           city: 'Belo Horizonte',
-          state: 'SP',
+          state: 'MG',
           postal: '01000000',
           country: 'Brasil',
         },
@@ -167,13 +167,13 @@ test.group('Client Group', (group) => {
     await client
       .post('/clients')
       .json({
-        name: 'John Doe',
+        name: 'Felipe',
         cpf: '12345678903',
         telephone: '5511987654321',
         address: {
           street: '123 Main St',
           city: 'Belo Horizonte',
-          state: 'SP',
+          state: 'MG',
           postal: '01000000',
           country: 'Brasil',
         },
@@ -197,13 +197,13 @@ test.group('Client Group', (group) => {
     await client
       .post('/clients')
       .json({
-        name: 'John Doe',
+        name: 'Felipe',
         cpf: '12345678903',
         telephone: '5511987654321',
         address: {
           street: '123 Main St',
           city: 'Belo Horizonte',
-          state: 'SP',
+          state: 'MG',
           postal: '01000000',
           country: 'Brasil',
         },
