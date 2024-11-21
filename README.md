@@ -29,7 +29,7 @@ npm run test
 
 ```bash
 copie o arquivo .env.example para .env e configure suas variáveis de ambiente
-# esta é sua chave para gerar o jwt
+# esta é a chave para gerar o jwt
 APP_KEY=botafogocampeao24
 
 # estas são suas configurações do banco de dados, certifique-se que elas são iguais aqui e no seu docker-compose.yml
@@ -50,7 +50,7 @@ PORT=3333
 <details>
   <summary> 👀 Como Utilizar da Forma Correta os Endpoints</summary>
 
-a) Para acessar os endpoints de clients, products e sales é necessário uma autenticação utilizando o JWT como ferramenta;    
+a) Para acessar os endpoints de clients, products e sales, é necessário uma autenticação utilizando o JWT como ferramenta;    
 b) Então, o primeiro passo para conseguir acessar as demais rotas é criar um usuário para si, por meio do endpoint `POST /signup`;    
 c) O segundo passo é fazer o login na rota `POST /login`  
 d) Ao fazer o login com um usuário cadastrado, será retornado um token da seguinte forma:  
@@ -107,8 +107,8 @@ Nas requisições POST é necessário informar o seguinte JSON:
 | `GET` | Retorna os produtos criados | http://localhost:3333/products |
 | `GET` | Retorna o produto especificado com seu id | http://localhost:3333/products/id |
 | `POST` | Cria um novo produto | http://localhost:3333/products |
-| `PATCH` | Atualiza um produto em específico | http://localhost:3333/products/:id |
-| `DELETE` | Deleta um produto em específico | http://localhost:3333/products/:id |
+| `PATCH` | Atualiza um produto em específico | http://localhost:3333/products/id |
+| `DELETE` | Deleta um produto em específico | http://localhost:3333/products/id |
 
 Na requisição POST é necessário informar o seguinte JSON:
 ```
@@ -125,8 +125,8 @@ Na requisição POST é necessário informar o seguinte JSON:
 | `GET` | Retorna os clientes criados | http://localhost:3333/clients |
 | `GET` | Retorna o cliente especificado com seu id | http://localhost:3333/clients/id |
 | `POST` | Cria um novo cliente | http://localhost:3333/clients |
-| `PATCH` | Atualiza um cliente em específico | http://localhost:3333/clients/:id |
-| `DELETE` | Deleta um cliente em específico | http://localhost:3333/clients/:id |
+| `PATCH` | Atualiza um cliente em específico | http://localhost:3333/clients/id |
+| `DELETE` | Deleta um cliente em específico | http://localhost:3333/clients/id |
 
 Na requisição POST é necessário informar o seguinte JSON:
 ```
@@ -144,10 +144,10 @@ Na requisição POST é necessário informar o seguinte JSON:
 }
 ```
 <details>
-  <summary>⚠️ Observação Importante sobre o GET</summary>
+  <summary>⚠️ Observação Importante sobre o `GET /clients/id`</summary>
   
   Ao buscar por um cliente em específico, é possivel filtrar as vendas que serão retornadas ao passar o mês e ano no endpoint.
-  Exemplo: 
+  Exemplo:  
   `localhost:3333/clients/{id}?month={monthNumber}&year={yearNumber}`
   
 </details>
@@ -161,14 +161,12 @@ Na requisição POST é necessário informar o seguinte JSON:
 Na requisição POST é necessário informar o seguinte JSON:
 ```
 {
-  "customerId": 1,
+  "clientId": 1,
   "productId": 1,
   "quantity": 2,
   "unit_price": 20.00,
 }
 ```
-
-
 
 <details>
   <summary>💡 Notas sobre o Projeto </summary>
