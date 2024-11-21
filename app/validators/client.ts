@@ -4,10 +4,10 @@ export const newClientValidator = vine.compile(
   // compile serve para criar um metodo
   vine.object({
     name: vine.string().minLength(3),
-    cpf: vine.string().minLength(11).maxLength(11),
+    cpf: vine.string().fixedLength(11),
     telephone: vine.number().min(9),
     address: vine.object({
-      address: vine.string().minLength(3),
+      street: vine.string().minLength(3),
       city: vine.string().minLength(3),
       state: vine.string().minLength(2).maxLength(2),
       postal: vine.string().minLength(8).maxLength(8),

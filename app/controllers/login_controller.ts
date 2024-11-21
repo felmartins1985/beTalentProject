@@ -1,6 +1,5 @@
 import User from '#models/user'
 import type { HttpContext } from '@adonisjs/core/http'
-// >VERIFICAR SOBRE O TOKEN<
 import hash from '@adonisjs/core/services/hash'
 
 export default class LoginController {
@@ -17,10 +16,6 @@ export default class LoginController {
       response.status(401)
       return response.json({ message: 'Invalid Password' })
     }
-    const token = await User.accessTokens.create(findUser)
-    // Gera o token JWT
-    //const token = await auth.use('jwt').generate(findUser)
-    // Retorna o token
-    return response.json({ type: 'Bearer', value: token.value!.release() })
+    return await auth.use('jwt').generate(findUser)
   }
 }

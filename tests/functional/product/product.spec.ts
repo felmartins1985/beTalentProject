@@ -1,6 +1,6 @@
 import { test } from '@japa/runner'
 import testUtils from '@adonisjs/core/services/test_utils'
-test.group('Product store', (group) => {
+test.group('Product Group', (group) => {
   group.each.setup(() => testUtils.db().truncate())
   test('should create an Product', async ({ client }) => {
     const response = await client.post('/products').json({

@@ -1,6 +1,6 @@
 import { test } from '@japa/runner'
 import testUtils from '@adonisjs/core/services/test_utils'
-test.group('Client store', (group) => {
+test.group('Client Group', (group) => {
   group.each.setup(() => testUtils.db().truncate())
   test('should create an Client', async ({ client }) => {
     const response = await client.post('/clients').json({
@@ -60,6 +60,34 @@ test.group('Client store', (group) => {
       },
     })
     const response = await client.get('/clients/1')
+    response.assertStatus(200)
+  })
+  test('should return all the clients', async ({ client }) => {
+    await client.post('/clients').json({
+      name: 'John Doe',
+      cpf: '12345678903',
+      telephone: '+5511987654321',
+      address: {
+        address: '123 Main St',
+        city: 'Belo Horizonte',
+        state: 'SP',
+        postal: '01000000',
+        country: 'Brasil',
+      },
+    })
+    await client.post('/clients').json({
+      name: 'Joao das Neves',
+      cpf: '12345678903',
+      telephone: '+5511987654321',
+      address: {
+        address: '123 Main St',
+        city: 'Belo Horizonte',
+        state: 'SP',
+        postal: '01000000',
+        country: 'Brasil',
+      },
+    })
+    const response = await client.get('/clients/')
     response.assertStatus(200)
   })
   test('should delete a client', async ({ client }) => {

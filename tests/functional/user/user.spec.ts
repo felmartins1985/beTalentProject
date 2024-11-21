@@ -1,6 +1,6 @@
 import { test } from '@japa/runner'
 import testUtils from '@adonisjs/core/services/test_utils'
-test.group('User store', (group) => {
+test.group('User Group', (group) => {
   group.each.setup(() => testUtils.db().withGlobalTransaction())
   test('should create an user', async ({ client }) => {
     const response = await client.post('/signup').json({

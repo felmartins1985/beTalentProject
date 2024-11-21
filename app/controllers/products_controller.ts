@@ -1,7 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import { newProductValidator, updateProductValidator } from '../validators/product.js'
 import Product from '#models/product'
-import BadRequestException from '#exceptions/bad_request_exception'
 
 export default class ProductsController {
   async index({ response }: HttpContext) {
@@ -20,7 +19,7 @@ export default class ProductsController {
   async show({ request, response }: HttpContext) {
     try {
       const { id } = request.params()
-      const product = await Product.findOrFail(id)
+      const product = await Product.findBy('id', id)
       if (!product) {
         response.status(404)
         return response.json({ message: 'Product not exists' })
@@ -52,7 +51,7 @@ export default class ProductsController {
     try {
       const { id } = request.params()
       const data = await request.validateUsing(updateProductValidator)
-      const product = await Product.findOrFail(id)
+      const product = await Product.findBy('id', id)
       if (!product) {
         response.status(404)
         return response.json({ message: 'Product not exists' })
@@ -69,9 +68,10 @@ export default class ProductsController {
   async destroy({ request, response }: HttpContext) {
     try {
       const { id } = request.params()
-      const product = await Product.findOrFail(id)
+      const product = await Product.findBy('id', id)
       if (!product) {
-        throw new BadRequestException('Product not exists', { status: 404 })
+        response.status(404)
+        return response.json({ message: 'Product not exists' })
       }
       await product.delete()
       response.status(204)

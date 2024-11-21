@@ -17,14 +17,14 @@ export default class ClientsController {
   }
   async show({ params, request, response }: HttpContext) {
     try {
-      const clientId = params.id
-      if (!clientId) {
-        response.status(404)
-        return response.json({ message: 'Client not exists' })
+      const client = await Client.findBy('id', params.id)
+      if (!client) {
+        response.status(400)
+        return response.json({ message: 'Client does not exists' })
       }
       const { month, year } = request.qs()
       const salesClients = await Client.query()
-        .where('id', clientId)
+        .where('id', params.id)
         .preload('Addresses')
         .preload('Telephones')
         .preload('Sales', (query) => {
@@ -86,10 +86,10 @@ export default class ClientsController {
     const transaction = await db.transaction()
     try {
       const body = await request.validateUsing(updateClient)
-      const client = await Client.findOrFail(params.id)
+      const client = await Client.findBy('id', params.id)
       if (!client) {
         response.status(400)
-        return response.json({ message: 'Client not exists' })
+        return response.json({ message: 'Client does not exists' })
       }
       await transaction
         .from('addresses')
