@@ -1,6 +1,6 @@
 # BeTalentProject - 👨🏻‍💻
 
-Consiste em uma aplicação que permite, por meio de endpoints, cadastrar clientes, produtos e vendas. Para realizar essas funções, é necessário criar um usuário e fazer o login, haja vista é preciso ter permissão para fazer o gerenciamento das rotas acima.
+Consiste em uma aplicação que permite, por meio de endpoints, cadastrar clientes, produtos e vendas.
 * O sistema foi desenvolvido usando AdonisJS em sua versão 6 e utiliza MySQL como banco de dados.
 
 ### Instruções
@@ -46,6 +46,29 @@ PORT=3333
 
 ```
 ### Endpoints
+
+<details>
+  <summary> 👀 Como Utilizar da Forma Correta os Endpoints</summary>
+
+a) Para acessar os endpoints de clients, products e sales é necessário uma autenticação utilizando o JWT como ferramenta;    
+b) Então, o primeiro passo para conseguir acessar as demais rotas é criar um usuário para si, por meio do endpoint `POST /signup`;    
+c) O segundo passo é fazer o login na rota `POST /login`  
+d) Ao fazer o login com um usuário cadastrado, será retornado um token da seguinte forma:  
+
+
+```json
+{
+   "type": "Bearer",
+   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTcyMTU5ODgzM30.CgEycI6RjNmvZmYwKSQX85bk74iLVXeUXhznK4xlTJo"
+}
+```
+
+```
+Após realizar o login, basta inserir no Header dos endpoints que necessitam de Token, no campo Authorization, da seguinte forma:
+
+`Bearer {token}`
+```
+</details>
 
 #### Signup
 
@@ -112,7 +135,7 @@ Na requisição POST é necessário informar o seguinte JSON:
   "cpf": "66666666666",
   "telephone": "666666666",
   "address": {
-    "address": "666 RockStar Street",
+    "street": "666 RockStar Street",
     "city": "Seattle",
     "state": "Washington",
     "postal": "66666666",
@@ -121,13 +144,14 @@ Na requisição POST é necessário informar o seguinte JSON:
 }
 ```
 <details>
-  <summary>💡 Observação Importante sobre o GET</summary>
+  <summary>⚠️ Observação Importante sobre o GET</summary>
   
   Ao buscar por um cliente em específico, é possivel filtrar as vendas que serão retornadas ao passar o mês e ano no endpoint.
   Exemplo: 
   `localhost:3333/clients/{id}?month={monthNumber}&year={yearNumber}`
   
 </details>
+
 #### Sales
 
 | Método | Funcionalidade | URL |
@@ -143,39 +167,17 @@ Na requisição POST é necessário informar o seguinte JSON:
   "unit_price": 20.00,
 }
 ```
-## Como Utilizar
-
-### Como logar no sistema
-O primeiro passo para conseguir acessar as demais rotas é criar um usuário para si, é feito através do endpoint `POST /signup` com um body semelhante a:
 
 
-```json
-{
-   "name": "nome",
-   "password": "senha",
-   "email": "test@test.com"
-}
-```
-o próximo passo é fazer o login na rota `POST /login`:
-```json
-{
-   "email": "test@test.com",
-   "password": "123"
-}
 
-
-/* exemplo de retorno bem sucedido
-{
-   "type": "bearer",
-   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTcyMTU5ODgzM30.CgEycI6RjNmvZmYwKSQX85bk74iLVXeUXhznK4xlTJo"
-}
-*/
-
-```
-após isso é só colocar o token em um campo Authorization no header de suas requisições, o formato do token deve ser:
-
-`Bearer {token}`
-
-
+<details>
+  <summary>💡 Notas sobre o Projeto </summary>
+  
+  a) Ao pesquisar sobre a versao 6 do adonis, a sua documentação nos informa que a forma "certa" de fazer autenticação seria por meio do auth utilizando uma tabela que salvaria os tokens de acesso do usuário. Eles utilizam o que é chamado de Token Opaco.  
+  b) Contudo, nada é falado sobre o jwt e não encontrei, em minhas pesquisas, documentação sobre a forma de utilizar o jwt com a versão 6 do Adonis.  
+  c) Logo, ao procurar em repositórios de projetos de outros programadores, encontrei um em que a utilização do jwt é utilizada e o apliquei no meu projeto, funcionando da forma desejada.  
+  d) No que diz respeito ao testes feitos, eles estão passando. Contudo, por algum motivo que não consegui descobrir, há momentos em que o node ace test falha. Mas, ao fazer o mesmo teste novamente, funciona. 
+  
+</details>
 
 
