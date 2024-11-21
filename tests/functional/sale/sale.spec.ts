@@ -14,13 +14,12 @@ test.group('Sale Group', (group) => {
       password: 'password123',
     })
     const token = loginResponse.body().token
-    console.log('token=======>', token)
     const clientResponse = await client
       .post('/clients')
       .json({
         name: 'John Doe',
         cpf: '12345678903',
-        telephone: 5511987654321,
+        telephone: "5511987654321",
         address: {
           street: '123 Main St',
           city: 'Belo Horizonte',
@@ -30,7 +29,6 @@ test.group('Sale Group', (group) => {
         },
       })
       .header('Authorization', `Bearer ${token}`)
-    console.log('clientResponse=======>', clientResponse.body())
     const clientId = clientResponse.body().client.id
 
     const productResponse = await client
@@ -41,7 +39,6 @@ test.group('Sale Group', (group) => {
         price: 1.99,
       })
       .header('Authorization', `Bearer ${token}`)
-    console.log('productResponse=======>', productResponse.body())
     const productId = productResponse.body().data.id
 
     const response = await client
