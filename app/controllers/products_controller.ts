@@ -22,7 +22,7 @@ export default class ProductsController {
       const product = await Product.findBy('id', id)
       if (!product) {
         response.status(404)
-        return response.json({ message: 'Product not exists' })
+        return response.json({ message: 'Product does not exists' })
       }
       response.status(200)
       return response.json({ data: product })
@@ -54,7 +54,7 @@ export default class ProductsController {
       const product = await Product.findBy('id', id)
       if (!product) {
         response.status(404)
-        return response.json({ message: 'Product not exists' })
+        return response.json({ message: 'Product does not exists' })
       }
       product.merge(data)
       await product.save()
@@ -71,7 +71,7 @@ export default class ProductsController {
       const product = await Product.findBy('id', id)
       if (!product) {
         response.status(404)
-        return response.json({ message: 'Product not exists' })
+        return response.json({ message: 'Product does not exists' })
       }
       await product.delete()
       response.status(204)

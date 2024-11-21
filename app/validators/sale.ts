@@ -5,6 +5,5 @@ export const newSaleValidator = vine.compile(
     clientId: vine.number(),
     productId: vine.number(),
     quantity: vine.number(),
-    unit_price: vine.number(),
   })
 )
