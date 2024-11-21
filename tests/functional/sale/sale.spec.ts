@@ -47,7 +47,6 @@ test.group('Sale Group', (group) => {
         clientId: clientId,
         productId: productId,
         quantity: 2,
-        unit_price: 10.0,
       })
       .header('Authorization', `Bearer ${token}`)
     response.assertStatus(201)
