@@ -170,10 +170,8 @@ Na requisição POST é necessário informar o seguinte JSON:
 <details>
   <summary>💡 Notas sobre o Projeto </summary>
   
-  a) Ao pesquisar sobre a versão 6 do adonis, a sua documentação nos informa que a forma "desejada" de fazer autenticação seria por meio do auth utilizando uma tabela que salvaria os tokens de acesso do usuário. Eles utilizam o que é chamado de Token Opaco.  
-  b) Contudo, nada é falado sobre o jwt e não encontrei, em minhas pesquisas, documentação sobre a forma de utilizar o jwt com a versão 6 do Adonis.  
-  c) Logo, ao procurar em repositórios de projetos de outros programadores, encontrei um em que a utilização do jwt é utilizada e o apliquei no meu projeto, funcionando da forma desejada.  
-  d) No que diz respeito ao testes feitos, eles estão passando. Contudo, por algum motivo que não consegui descobrir, há momentos em que o node ace test falha. Mas, ao fazer o mesmo teste novamente, funciona. 
+  a) Ao pesquisar sobre a versão 6 do adonis, a sua documentação nos informa que a forma "desejada" de fazer autenticação seria por meio do auth utilizando uma tabela que salvaria os tokens de acesso do usuário. Eles utilizam o que é chamado de Token Opaco.    
+  b) No que diz respeito ao testes feitos, eles estão passando. Contudo, por algum motivo que não consegui descobrir, há momentos em que o node ace test falha. Mas, ao fazer o mesmo teste novamente, funciona. 
   
 </details>
 
